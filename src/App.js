@@ -51,8 +51,8 @@ function App() {
         Click Me
       </button>
       <ul>
-        {bookList.map(book => (
-          <li>{book}</li>
+        {bookList.map((book, i) => (
+          <li key={i}>{book}</li>
         ))}
       </ul>
       {/* <ul>
@@ -65,12 +65,12 @@ function App() {
       {currentCount}
 
       <UserContext.Provider value={name}>
-        <h1>Hello CodeSandbox</h1>
+        <h1>Hello World</h1>
         <input value={name} onChange={handleNameChange} />
         {name}
         <Navigation />
       </UserContext.Provider>
-      
+
       <Footer />
     </div>
   );
