@@ -3,6 +3,9 @@ import ReactDOM from "react-dom";
 import Header from "./header";
 import Footer from "./footer";
 import axios from 'axios';
+import UserContext from './UserContext';
+import Navigation from './Navigation';
+
 
 import "./App.css";
 
@@ -12,7 +15,7 @@ function App() {
     "Anna Karenina",
     "The Valley of the Dolls"
   ]);
-  // const [planetList, setPlanetList] = useState([]);
+  
   const [currentCount, dispatch] = useReducer((state, action) => {
     switch (action.type) {
       case "GO_UP":
@@ -23,12 +26,21 @@ function App() {
         return state;
     }
   }, 0);
+
+  const [name, setName] = useState("");
+  const handleNameChange = function (event) {
+    setName(event.target.value);
+  };
+
+  // Luke was not able to get this working
+  // const [planetList, setPlanetList] = useState([]);
   // useEffect(() => {
   //   axios.get("https://swapi.co/api/planets")
   //     .then(response => {
   //       setPlanetList(response.data.results);
   //     })
   // })
+
   return (
     <div className="App">
       <Header />
@@ -51,6 +63,14 @@ function App() {
       <button onClick={() => dispatch({ type: "GO_UP" })}>+</button>
       <button onClick={() => dispatch({ type: "GO_DOWN" })}>-</button>
       {currentCount}
+
+      <UserContext.Provider value={name}>
+        <h1>Hello CodeSandbox</h1>
+        <input value={name} onChange={handleNameChange} />
+        {name}
+        <Navigation />
+      </UserContext.Provider>
+      
       <Footer />
     </div>
   );
