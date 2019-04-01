@@ -4,7 +4,7 @@ import Header from "./header";
 import Footer from "./footer";
 import axios from 'axios';
 
-import "./styles.css";
+import "./App.css";
 
 function App() {
   const [title, setTitle] = useState("");
@@ -12,24 +12,24 @@ function App() {
     "Anna Karenina",
     "The Valley of the Dolls"
   ]);
-  const [planetList, setPlanetList] = useState([]);
+  // const [planetList, setPlanetList] = useState([]);
   const [currentCount, dispatch] = useReducer((state, action) => {
-    switch(action.type){
+    switch (action.type) {
       case "GO_UP":
-        return state +1;
-      case "GO_DOWN": 
-        return state -1;
+        return state + 1;
+      case "GO_DOWN":
+        return state - 1;
       default:
         return state;
     }
   }, 0);
-  useEffect(() => {
-    axios.get("https://swapi.co/api/planets")
-    .then(response => {
-      setPlanetList(response.data.results);
-    })
-  })
-   return (
+  // useEffect(() => {
+  //   axios.get("https://swapi.co/api/planets")
+  //     .then(response => {
+  //       setPlanetList(response.data.results);
+  //     })
+  // })
+  return (
     <div className="App">
       <Header />
       <h2>Start editing to see some magic happen!</h2>
@@ -43,11 +43,11 @@ function App() {
           <li>{book}</li>
         ))}
       </ul>
-      <ul>
+      {/* <ul>
         {planetList.map(planet => (
           <li>{planet}</li>
         ))}
-      </ul>
+      </ul> */}
       <button onClick={() => dispatch({ type: "GO_UP" })}>+</button>
       <button onClick={() => dispatch({ type: "GO_DOWN" })}>-</button>
       {currentCount}
@@ -58,4 +58,4 @@ function App() {
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
-
+export default App;
