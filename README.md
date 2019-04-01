@@ -1,3 +1,5 @@
+This project was created to code along with a lecture at a ReactMN meetup
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
